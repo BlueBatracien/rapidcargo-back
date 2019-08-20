@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/output")
 public class OutputMovementController {
-    
+
 }
