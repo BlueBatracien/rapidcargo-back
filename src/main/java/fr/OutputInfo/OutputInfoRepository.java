@@ -1,8 +1,8 @@
-package fr.InputMovement;
+package fr.OutputInfo;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InputMovementRepository extends CrudRepository<InputMovement, Integer> {
+public interface OutputInfoRepository extends CrudRepository<OutputInfo, Integer> {
 }

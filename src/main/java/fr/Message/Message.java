@@ -1,13 +1,14 @@
-package fr.InputMovement;
+package fr.Message;
 
-import fr.MerchandiseInfo.MerchandiseInfo;
 import fr.Movement.Movement;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "input_movement", schema = "public", catalog = "rapidcargo_db")
-public class InputMovement {
+@Table(name = "message", schema = "public", catalog = "rapidcargo_db")
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +19,8 @@ public class InputMovement {
     @JoinColumn(name = "fk_movement")
     private Movement movement;
 
-    @OneToOne
-    @JoinColumn(name = "fk_merchandise_info")
-    private MerchandiseInfo merchandiseInfo;
-
+    @Column(name = "time", columnDefinition = "TIMESTAMP")
+    private LocalDateTime time;
 
     public Integer getId() {
         return id;
@@ -39,11 +38,11 @@ public class InputMovement {
         this.movement = movement;
     }
 
-    public MerchandiseInfo getMerchandiseInfo() {
-        return merchandiseInfo;
+    public LocalDateTime getTime() {
+        return time;
     }
 
-    public void setMerchandiseInfo(MerchandiseInfo merchandiseInfo) {
-        this.merchandiseInfo = merchandiseInfo;
+    public void setTime(LocalDateTime time) {
+        this.time = time;
     }
 }

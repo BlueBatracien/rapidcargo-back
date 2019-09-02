@@ -1,7 +1,13 @@
 package fr.Movement;
 
+import fr.Customs.Customs;
+import fr.MerchandiseInfo.MerchandiseInfo;
+import fr.OutputInfo.OutputInfo;
+import fr.User.User;
+import fr.Warehouse.Warehouse;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,19 +18,33 @@ public class Movement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "creation_date")
+    @Column(name = "creation_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime creationDate;
-    @Column(name = "realized_date")
-    private LocalDateTime realizedDate;
-    @Column(name = "declaration_place")
-    private String declarationPlace;
-    @Column(name = "warehouse_code")
-    private String warehouseCode;
-    @Column(name = "warehouse_name")
-    private String warehouseName;
-    @Column(name = "customs_status")
-    private String customsStatus;
-
+    @Column(name = "realized_date", columnDefinition = "TIMESTAMP")
+    private LocalDate realizedDate;
+    @ManyToOne
+    @JoinColumn(name = "declaration_place")
+    private Warehouse declarationPlace;
+    @ManyToOne
+    @JoinColumn(name = "fk_user")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "fk_customs")
+    private Customs customs;
+    @OneToOne
+    @JoinColumn(name = "fk_merchandise_info")
+    private MerchandiseInfo merchandiseInfo;
+    @Column(name = "type")
+    private String type;
+    @ManyToOne
+    @JoinColumn(name = "fk_original_warehouse")
+    private Warehouse originalWarehouse;
+    @OneToOne
+    @JoinColumn(name = "fk_output_info")
+    private OutputInfo outputInfo;
+    @ManyToOne
+    @JoinColumn(name = "fk_destination_warehouse")
+    private Warehouse destinationWarehouse;
 
     public int getId() {
         return id;
@@ -42,44 +62,76 @@ public class Movement {
         this.creationDate = creationDate;
     }
 
-    public LocalDateTime getRealizedDate() {
+    public LocalDate getRealizedDate() {
         return realizedDate;
     }
 
-    public void setRealizedDate(LocalDateTime realizedDate) {
+    public void setRealizedDate(LocalDate realizedDate) {
         this.realizedDate = realizedDate;
     }
 
-    public String getDeclarationPlace() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Customs getCustoms() {
+        return customs;
+    }
+
+    public void setCustoms(Customs customs) {
+        this.customs = customs;
+    }
+
+    public MerchandiseInfo getMerchandiseInfo() {
+        return merchandiseInfo;
+    }
+
+    public void setMerchandiseInfo(MerchandiseInfo merchandiseInfo) {
+        this.merchandiseInfo = merchandiseInfo;
+    }
+
+    public Warehouse getDeclarationPlace() {
         return declarationPlace;
     }
 
-    public void setDeclarationPlace(String declarationPlace) {
+    public void setDeclarationPlace(Warehouse declarationPlace) {
         this.declarationPlace = declarationPlace;
     }
 
-    public String getWarehouseCode() {
-        return warehouseCode;
+    public String getType() {
+        return type;
     }
 
-    public void setWarehouseCode(String warehouseCode) {
-        this.warehouseCode = warehouseCode;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getWarehouseName() {
-        return warehouseName;
+
+    public Warehouse getOriginalWarehouse() {
+        return originalWarehouse;
     }
 
-    public void setWarehouseName(String warehouseName) {
-        this.warehouseName = warehouseName;
+    public void setOriginalWarehouse(Warehouse originalWarehouse) {
+        this.originalWarehouse = originalWarehouse;
     }
 
-    public String getCustomsStatus() {
-        return customsStatus;
+    public OutputInfo getOutputInfo() {
+        return outputInfo;
     }
 
-    public void setCustomsStatus(String customsStatus) {
-        this.customsStatus = customsStatus;
+    public void setOutputInfo(OutputInfo outputInfo) {
+        this.outputInfo = outputInfo;
     }
 
+    public Warehouse getDestinationWarehouse() {
+        return destinationWarehouse;
+    }
+
+    public void setDestinationWarehouse(Warehouse destinationWarehouse) {
+        this.destinationWarehouse = destinationWarehouse;
+    }
 }

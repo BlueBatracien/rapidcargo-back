@@ -7,10 +7,13 @@
     <property name="connection.url">jdbc:postgresql://localhost:5432/rapidcargo_db</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
 
-    <mapping class="fr.InputMovement.InputMovement"/>
-    <mapping class="fr.OutputMovement.OutputMovement"/>
-    <mapping class="fr.User.User"/>
+    <mapping class="fr.Customs.Customs"/>
+    <mapping class="fr.Message.Message"/>
+    <mapping class="fr.MerchandiseInfo.MerchandiseInfo"/>
     <mapping class="fr.Movement.Movement"/>
-    <mapping class="fr.MerchandiseInfo.MerchandiseInfoRepository"/>
+    <mapping class="fr.OutputInfo.OutputInfo"/>
+    <mapping class="fr.RefrenceType.ReferenceType"/>
+    <mapping class="fr.User.User"/>
+    <mapping class="fr.Warehouse.Warehouse"/>
   </session-factory>
 </hibernate-configuration>

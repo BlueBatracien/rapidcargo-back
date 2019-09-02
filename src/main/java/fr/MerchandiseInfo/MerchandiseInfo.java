@@ -1,5 +1,7 @@
 package fr.MerchandiseInfo;
 
+import fr.RefrenceType.ReferenceType;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,18 +12,19 @@ public class MerchandiseInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "ref_type")
-    private String refType;
+    @ManyToOne
+    @JoinColumn(name = "fk_reference_type")
+    private ReferenceType referenceType;
     @Column(name = "reference")
     private Long reference;
     @Column(name = "quantity")
     private Double quantity;
     @Column(name = "weight")
     private Double weight;
-    @Column(name = "ref_quantity")
-    private Double refQuantity;
-    @Column(name = "ref_weight")
-    private Double refWeight;
+    @Column(name = "total_quantity")
+    private Double totalQuantity;
+    @Column(name = "total_weight")
+    private Double totalWeight;
     @Column(name = "description")
     private String description;
 
@@ -33,12 +36,12 @@ public class MerchandiseInfo {
         this.id = id;
     }
 
-    public String getRefType() {
-        return refType;
+    public ReferenceType getReferenceType() {
+        return referenceType;
     }
 
-    public void setRefType(String refType) {
-        this.refType = refType;
+    public void setReferenceType(ReferenceType referenceType) {
+        this.referenceType = referenceType;
     }
 
     public Long getReference() {
@@ -65,20 +68,20 @@ public class MerchandiseInfo {
         this.weight = weight;
     }
 
-    public Double getRefQuantity() {
-        return refQuantity;
+    public Double getTotalQuantity() {
+        return totalQuantity;
     }
 
-    public void setRefQuantity(Double refQuantity) {
-        this.refQuantity = refQuantity;
+    public void setTotalQuantity(Double totalQuantity) {
+        this.totalQuantity = totalQuantity;
     }
 
-    public Double getRefWeight() {
-        return refWeight;
+    public Double getTotalWeight() {
+        return totalWeight;
     }
 
-    public void setRefWeight(Double refWeight) {
-        this.refWeight = refWeight;
+    public void setTotalWeight(Double totalWeight) {
+        this.totalWeight = totalWeight;
     }
 
     public String getDescription() {

@@ -16,5 +16,14 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="d33e35dc-5af2-430d-b262-3dbe289268d6">
+      <database-info product="PostgreSQL" version="11.5 (Ubuntu 11.5-1.pgdg18.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.5" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
